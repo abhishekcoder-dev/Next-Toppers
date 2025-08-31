@@ -1,12 +1,64 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    grade: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+
   useEffect(() => {
     document.title = "Next Toppers - Contact Us";
   }, []);
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch('https://formspree.io/f/myzdjzkj', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          grade: formData.grade,
+          message: formData.message,
+          _replyto: formData.email,
+          _subject: `New Contact Form Submission from ${formData.name}`
+        })
+      });
+      
+      if (response.ok) {
+        setSubmitMessage('✅ Message sent successfully! We will get back to you soon.');
+        setFormData({ name: '', email: '', phone: '', grade: '', message: '' });
+      } else {
+        setSubmitMessage('❌ Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      setSubmitMessage('❌ Failed to send message. Please try again.');
+    }
+    
+    setIsSubmitting(false);
+    setTimeout(() => setSubmitMessage(''), 5000);
+  };
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navigation */}
@@ -53,34 +105,52 @@ export default function Contact() {
           {/* Contact Form */}
           <div className="bg-gray-900/50 rounded-2xl p-8 border border-cyan-400/30">
             <h2 className="text-3xl font-bold text-cyan-400 mb-6">Send us a Message</h2>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="block text-gray-300 mb-2">Full Name</label>
                 <input 
-                  type="text" 
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:border-cyan-400 focus:outline-none text-white"
                   placeholder="Enter your full name"
+                  required
                 />
               </div>
               <div>
                 <label className="block text-gray-300 mb-2">Email Address</label>
                 <input 
-                  type="email" 
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:border-cyan-400 focus:outline-none text-white"
                   placeholder="Enter your email"
+                  required
                 />
               </div>
               <div>
                 <label className="block text-gray-300 mb-2">Phone Number</label>
                 <input 
-                  type="tel" 
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:border-cyan-400 focus:outline-none text-white"
                   placeholder="Enter your phone number"
+                  required
                 />
               </div>
               <div>
                 <label className="block text-gray-300 mb-2">Grade/Class</label>
-                <select className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:border-cyan-400 focus:outline-none text-white">
+                <select 
+                  name="grade"
+                  value={formData.grade}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:border-cyan-400 focus:outline-none text-white"
+                  required
+                >
                   <option value="">Select your grade</option>
                   <option value="9">Grade 9</option>
                   <option value="10">Grade 10</option>
@@ -94,15 +164,27 @@ export default function Contact() {
                 <label className="block text-gray-300 mb-2">Message</label>
                 <textarea 
                   rows="4"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:border-cyan-400 focus:outline-none text-white"
                   placeholder="Tell us about your requirements or questions"
+                  required
                 ></textarea>
               </div>
+              {submitMessage && (
+                <div className={`p-4 rounded-lg text-center font-semibold ${
+                  submitMessage.includes('✅') ? 'bg-green-500/20 text-green-400 border border-green-400/30' : 'bg-red-500/20 text-red-400 border border-red-400/30'
+                }`}>
+                  {submitMessage}
+                </div>
+              )}
               <button 
                 type="submit"
-                className="w-full px-8 py-4 bg-gradient-to-r from-cyan-500 to-pink-500 rounded-lg font-bold text-lg hover:scale-105 transform transition-all duration-300 shadow-lg"
+                disabled={isSubmitting}
+                className="w-full px-8 py-4 bg-gradient-to-r from-cyan-500 to-pink-500 rounded-lg font-bold text-lg hover:scale-105 transform transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
