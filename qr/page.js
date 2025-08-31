@@ -152,9 +152,9 @@ export default function QRDonation() {
               </div>
               <div className="bg-gray-900/50 rounded-xl p-6 border-l-4 border-purple-400">
                 <p className="text-gray-300 text-lg leading-relaxed">
-                  🙏 "Thank you for considering supporting my work! Every contribution, no matter how small, 
+                  🙏 Thank you for considering supporting my work! Every contribution, no matter how small, 
                   motivates me to create better projects and helps me continue building amazing web experiences. 
-                  Your support means everything to me! 🚀✨"
+                  Your support means everything to me! 🚀✨
                 </p>
               </div>
             </div>
