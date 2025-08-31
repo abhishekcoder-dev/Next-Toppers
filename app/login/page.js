@@ -168,7 +168,7 @@ export default function Login() {
 
             <div className="mt-8 text-center">
               <p className="text-gray-400">
-                Don't have an account?{' '}
+                Don&apos;t have an account?{' '}
                 <a href="#" className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors duration-300">
                   Sign up here
                 </a>

@@ -85,12 +85,12 @@ export default function Home() {
           {/* Grade 9 */}
           <div className="group relative overflow-hidden rounded-2xl border border-cyan-400/30 hover:border-cyan-400 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/25">
             <div className="relative">
-              <img
+              <Image
                 src="https://dxixtlyravvxx.cloudfront.net/540/admin_v1/bundle_management/course/152792333113_9th%20aarambh%202.0%20banner%20app.jpg"
                 alt="Grade 9 Course"
-                fill="true"
-                className="object-cover rounded-t-2xl"
-                style={{ objectPosition: 'center', clipPath: 'inset(10px)' }}
+                width={300}
+                height={200}
+                className="object-cover rounded-t-2xl w-full h-48"
               />
             </div>
             <div className="p-4 text-white bg-gray-900/95 backdrop-blur-sm rounded-b-2xl">
@@ -115,12 +115,12 @@ export default function Home() {
           {/* Grade 10 */}
           <div className="group relative overflow-hidden rounded-2xl border border-pink-400/30 hover:border-pink-400 transition-all duration-300 hover:shadow-lg hover:shadow-pink-400/25">
             <div className="relative">
-              <img
+              <Image
                 src="https://dxixtlyravvxx.cloudfront.net/540/admin_v1/bundle_management/course/538903229246_aarambh%20banner%20app.jpg"
                 alt="Grade 10 Course"
-                fill="true"
-                className="object-cover rounded-t-2xl"
-                style={{ objectPosition: 'center', clipPath: 'inset(10px)' }}
+                width={300}
+                height={200}
+                className="object-cover rounded-t-2xl w-full h-48"
               />
             </div>
             <div className="p-4 text-white bg-gray-900/95 backdrop-blur-sm rounded-b-2xl">
@@ -145,12 +145,12 @@ export default function Home() {
           {/* Grade 11 Science */}
           <div className="group relative overflow-hidden rounded-2xl border border-green-400/30 hover:border-green-400 transition-all duration-300 hover:shadow-lg hover:shadow-green-400/25">
             <div className="relative">
-              <img
+              <Image
                 src="https://dxixtlyravvxx.cloudfront.net/540/admin_v1/bundle_management/course/183130728609_Prarambh%20BATCh%20Science%20Class%2011.png"
                 alt="Grade 11 Science Course"
-                fill="true"
-                className="object-cover rounded-t-2xl"
-                style={{ objectPosition: 'center', clipPath: 'inset(10px)' }}
+                width={300}
+                height={200}
+                className="object-cover rounded-t-2xl w-full h-48"
               />
             </div>
             <div className="p-4 text-white bg-gray-900/95 backdrop-blur-sm rounded-b-2xl">
@@ -175,12 +175,12 @@ export default function Home() {
           {/* Grade 11 Humanities */}
           <div className="group relative overflow-hidden rounded-2xl border border-purple-400/30 hover:border-purple-400 transition-all duration-300 hover:shadow-lg hover:shadow-purple-400/25">
             <div className="relative">
-              <img
+              <Image
                 src="https://dxixtlyravvxx.cloudfront.net/540/admin_v1/bundle_management/course/407786128517_11th%20prarambh%20hum%20app%20final%203499%20%281%29.jpg"
                 alt="Grade 11 Humanities Course"
-                fill="true"
-                className="object-cover rounded-t-2xl"
-                style={{ objectPosition: 'center', clipPath: 'inset(10px)' }}
+                width={300}
+                height={200}
+                className="object-cover rounded-t-2xl w-full h-48"
               />
             </div>
             <div className="p-4 text-white bg-gray-900/95 backdrop-blur-sm rounded-b-2xl">
