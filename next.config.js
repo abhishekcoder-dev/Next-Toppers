@@ -7,7 +7,10 @@ const nextConfig = {
       'dxixtlyravvxx.cloudfront.net',
       'nexttoppers.com',
       'yt3.googleusercontent.com',
-      'i.playboard.app'
+      'i.playboard.app',
+      'liquiddesigns.in',
+      'uxwing.com',
+      'encrypted-tbn0.gstatic.com'
     ],
   },
 }
